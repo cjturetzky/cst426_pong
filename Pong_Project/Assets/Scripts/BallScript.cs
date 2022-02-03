@@ -32,8 +32,10 @@ public class BallScript : MonoBehaviour
                 }
                 else{
                     speed += 1;
-                    direction.y *= -1;
                 }
+            }
+            if(speed > 0){
+                direction.y *= -1;
             }
             
             Debug.Log("Point: " + collision.contacts[0].point.y);
