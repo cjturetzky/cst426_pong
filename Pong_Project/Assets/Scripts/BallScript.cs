@@ -9,6 +9,8 @@ public class BallScript : MonoBehaviour
     public int maxspeed = 20;
     public float dampenAngle = 0.2f;
     public Vector3 direction;
+    int leftScore = 0;
+    int rightScore = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,5 +46,29 @@ public class BallScript : MonoBehaviour
         else if(collision.gameObject.tag == "Wall"){
             direction.y *= -1;
         }
+    }
+
+    void OnTriggerEnter(Collider collider){
+        Debug.Log("Goal scored");
+        if(speed > 0){
+            leftScore++;
+            speed = 3;
+        }
+        else{
+            rightScore++;
+            speed = -3;
+        }
+        Debug.Log("Left: " + leftScore + "\nRight: " + rightScore);
+        if(leftScore == 11){
+            Debug.Log("Left wins!");
+            leftScore = 0;
+            rightScore = 0;
+        }
+        if(rightScore == 11){
+            Debug.Log("Right wins!");
+            leftScore = 0;
+            rightScore = 0;
+        }
+        transform.position = new Vector3(0, 9.5f, 0);
     }
 }
