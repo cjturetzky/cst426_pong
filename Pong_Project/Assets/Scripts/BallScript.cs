@@ -23,6 +23,10 @@ public class BallScript : MonoBehaviour
     void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
+
+        if(Input.GetKey("r")){
+            Reset();
+        }
     }
 
     void OnCollisionEnter(Collision collision){
@@ -64,14 +68,22 @@ public class BallScript : MonoBehaviour
         textmesh.text = $"{leftScore} - {rightScore}";
         if(leftScore == 11){
             Debug.Log("Left wins!");
-            leftScore = 0;
-            rightScore = 0;
+            textmesh.text += "\nLeft Paddle wins!";
+            speed = 0;
         }
         if(rightScore == 11){
             Debug.Log("Right wins!");
-            leftScore = 0;
-            rightScore = 0;
+            textmesh.text += "\nRight Paddle wins!";
+            speed = 0;
         }
         transform.position = new Vector3(0, 9.5f, 0);
+    }
+
+    void Reset(){
+        transform.position = new Vector3(0, 9.5f, 0);
+        leftScore = 0;
+        rightScore = 0;
+        textmesh.text = $"{leftScore} - {rightScore}";
+        speed = 3;
     }
 }
