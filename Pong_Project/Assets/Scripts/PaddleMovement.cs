@@ -7,6 +7,7 @@ public class PaddleMovement : MonoBehaviour
     public float paddleSpeed = 5.0f;
     public bool useArrow = true;
     public AudioSource audio;
+    public GameObject ball;
 
     void Start(){
         audio = this.GetComponent<AudioSource>();
@@ -35,6 +36,9 @@ public class PaddleMovement : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision){
+        audio.pitch = ball.GetComponent<BallScript>().speed/4.0f;
+        if(audio.pitch < 0){ audio.pitch *= -1; }
+        Debug.Log($"pitch: {audio.pitch}");
         audio.Play();
     }
 }

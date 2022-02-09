@@ -114,6 +114,8 @@ MonoBehaviour:
   paddleSpeed: 7
   useArrow: 1
   audio: {fileID: 8755127494480383851}
+  ball: {fileID: 7786143093883268729, guid: 459fe1ca6371b4a548d53a7333896d0f, type: 3}
+  ballScript: {fileID: 0}
 --- !u!82 &8755127494480383851
 AudioSource:
   m_ObjectHideFlags: 0
