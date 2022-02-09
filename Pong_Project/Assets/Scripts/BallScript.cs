@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BallScript : MonoBehaviour
 {
 
+    public TextMeshProUGUI textmesh;
     public int speed = 1;
     public int maxspeed = 20;
     public float dampenAngle = 0.2f;
@@ -59,6 +61,7 @@ public class BallScript : MonoBehaviour
             speed = -3;
         }
         Debug.Log("Left: " + leftScore + "\nRight: " + rightScore);
+        textmesh.text = $"{leftScore} - {rightScore}";
         if(leftScore == 11){
             Debug.Log("Left wins!");
             leftScore = 0;

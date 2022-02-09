@@ -6,6 +6,11 @@ public class PaddleMovement : MonoBehaviour
 {
     public float paddleSpeed = 5.0f;
     public bool useArrow = true;
+    public AudioSource audio;
+
+    void Start(){
+        audio = this.GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -27,5 +32,9 @@ public class PaddleMovement : MonoBehaviour
             }
         }
         
+    }
+
+    void OnCollisionEnter(Collision collision){
+        audio.Play();
     }
 }
