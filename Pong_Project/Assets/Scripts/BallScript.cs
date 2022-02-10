@@ -66,6 +66,8 @@ public class BallScript : MonoBehaviour
         }
         Debug.Log("Left: " + leftScore + "\nRight: " + rightScore);
         textmesh.text = $"{leftScore} - {rightScore}";
+        textmesh.color = new Color(255.0f, 255-(leftScore) * 50.0f, 255-(rightScore) * 50.0f, 1.0f);
+        Debug.Log($"Text color: {textmesh.color}");
         if(leftScore == 11){
             Debug.Log("Left wins!");
             textmesh.text += "\nLeft Paddle wins!";
