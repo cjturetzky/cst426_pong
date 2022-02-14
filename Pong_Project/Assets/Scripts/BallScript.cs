@@ -52,33 +52,32 @@ public class BallScript : MonoBehaviour
         else if(collision.gameObject.tag == "Wall"){
             direction.y *= -1;
         }
-    }
-
-    void OnTriggerEnter(Collider collider){
-        Debug.Log("Goal scored");
-        if(speed > 0){
-            leftScore++;
-            speed = 3;
+        else if(collision.gameObject.tag == "Goal"){
+            Debug.Log("Goal scored");
+            if(speed > 0){
+                leftScore++;
+                speed = 3;
+            }
+            else{
+                rightScore++;
+                speed = -3;
+            }
+            Debug.Log("Left: " + leftScore + "\nRight: " + rightScore);
+            textmesh.text = $"{leftScore} - {rightScore}";
+            textmesh.color = new Color(255.0f, 255-(leftScore) * 50.0f, 255-(rightScore) * 50.0f, 1.0f);
+            Debug.Log($"Text color: {textmesh.color}");
+            if(leftScore == 11){
+                Debug.Log("Left wins!");
+                textmesh.text += "\nLeft Paddle wins!";
+                speed = 0;
+            }
+            if(rightScore == 11){
+                Debug.Log("Right wins!");
+                textmesh.text += "\nRight Paddle wins!";
+                speed = 0;
+            }
+            transform.position = new Vector3(0, 9.5f, 0);
         }
-        else{
-            rightScore++;
-            speed = -3;
-        }
-        Debug.Log("Left: " + leftScore + "\nRight: " + rightScore);
-        textmesh.text = $"{leftScore} - {rightScore}";
-        textmesh.color = new Color(255.0f, 255-(leftScore) * 50.0f, 255-(rightScore) * 50.0f, 1.0f);
-        Debug.Log($"Text color: {textmesh.color}");
-        if(leftScore == 11){
-            Debug.Log("Left wins!");
-            textmesh.text += "\nLeft Paddle wins!";
-            speed = 0;
-        }
-        if(rightScore == 11){
-            Debug.Log("Right wins!");
-            textmesh.text += "\nRight Paddle wins!";
-            speed = 0;
-        }
-        transform.position = new Vector3(0, 9.5f, 0);
     }
 
     void Reset(){

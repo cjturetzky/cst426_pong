@@ -366,6 +366,8 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
 "Assets/Scripts/BallScript.cs"
 "Assets/Scripts/PaddleMovement.cs"
+"Assets/Scripts/PowerScript.cs"
+"Assets/Scripts/PowerScript2.cs"
 -langversion:9.0
 
 /deterministic
